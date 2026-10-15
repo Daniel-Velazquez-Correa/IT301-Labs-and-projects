@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 11: Mouse events</title>
+    <style>
+        button {
+            background-color: blue;
+            padding: 20px 40px;
+            cursor: pointer;
+
+        }
+
+        #mouse {
+            width: 75vh;
+            height: 250px;
+            display: flex;
+            margin: 20px auto;
+            align-items: center;
+            border: 3px solid black;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <button id="mybutton">Click Me! 😊</button>
+    <div id="mouse">Move here</div>
+    <script>
+        const button = document.getElementById("mybutton");
+        const mouse = document.getElementById("mouse");
+
+        function overbutton(event) {
+            event.target.style.backgroundColor = "yellow";
+            event.target.textContent = 'Do not click! 😠';
+        }
+
+        button.addEventListener('mouseover', overbutton);
+
+        function click(event) {
+            event.target.style.backgroundColor = "red";
+            event.target.textContent = 'Ouch! 🤕';
+        }
+
+        button.addEventListener('click', click);
+
+        function leave(event) {
+            event.target.style.backgroundColor = "lightgreen";
+            event.target.textContent = 'Phew! 😌';
+        }
+
+        button.addEventListener('mouseleave', leave);
+
+        function double(event) {
+            event.target.style.backgroundColor = "pink";
+            event.target.textContent = 'Double trouble! 🤩';
+        }
+
+        button.addEventListener('dblclick', double);
+
+        function move(event) {
+            event.target.style.backgroundColor = "lightblue";
+            event.target.textContent = 'I see you! 👀';
+        }
+
+        mouse.addEventListener('mousemove', move);
+    </script>
+</body>
+</html>

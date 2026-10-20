@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Lab 12</title>
+    </head>
+    <body>
+        <h1>Greeting and Calculator</h1>
+
+        <form id="greetingForm" action="#">
+            <h2>Greeting</h2>
+            <label for="name">Enter your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <br>
+            <button type="submit">Greet me</button>
+        </form>
+
+        <h2 id="greeting"></h2>
+        <form id="calculatorForm" action="#">
+            <h2>Calculator</h2>
+            <label for="num1">Enter first number:</label>
+            <input type="number" id="num1" name="num1" required>
+
+            <br>
+            <label for="num2">Enter second number:</label>
+            <input type="number" id="num2" name="num2" required>
+
+            <br>
+            <h3>Choose an operation:</h3>
+
+            <input type="radio" id="add" name="operation"
+                value="add" checked>
+            <label for="add">Addition (+)</label>
+            <br>
+
+            <input type="radio" id="subtract" name="operation"
+               value="subtract">
+            <label for="subtract">Subtraction (-)</label>
+            <br>
+
+            <input type="radio" id="multiply" name="operation"
+               value="multiply">
+            <label for="multiply">Multiplication (*)</label>
+            <br>
+
+            <input type="radio" id="divide" name="operation"
+               value="divide">
+            <label for="divide">Division (/)</label>
+
+            <br>
+
+            <button type="submit">Calculate</button>
+            <button type="button" id="clear">Start Again</button>
+
+            <p id="result"></p>
+        </form>
+
+        <script>
+            document.getElementById("greetingForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                const name = document.getElementById("name").value;
+                document.getElementById("greeting").textContent = "Hello, " + name + "!";
+            });
+
+            document.getElementById("calculatorForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                const num1 = Number(document.getElementById("num1").value);
+                const num2 = Number(document.getElementById("num2").value);
+                const operation = document.querySelector('input[name="operation"]:checked').value;
+                let result;
+
+                if (operation === "add") {
+                    result = num1 + num2;
+                } else if (operation === "subtract") {
+                    result = num1 - num2;
+                } else if (operation === "multiply") {
+                    result = num1 * num2;
+                } else if (operation === "divide") {
+                    result = num1 / num2;
+                }
+
+
+                document.getElementById("result").textContent = "Result: " + result;
+            });
+
+            document.getElementById("clear").addEventListener("click", function() {
+                document.getElementById("greetingForm").reset();
+                document.getElementById("calculatorForm").reset();
+                document.getElementById("greeting").textContent = "";
+                document.getElementById("result").textContent = "";
+            });
+        </script>
+
+    </body>
+</html>
